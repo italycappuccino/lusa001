@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script type="text/javascript" th:src="@{/js/jquery.min.js}"/>
+</head>
+<body>
+<h1>Hello,<span th:text="${userName}"/></h1>
+<a href="/demo1">click me</a>
+<div id="msg"></div>
+<button id="bt1" onclick="loadText()">loadText</button>
+<script type="text/javascript">
+    function loadText() {
+        $.ajax({
+            url:"/rest1",
+            data:{userName:"Edison"},
+            type:"get",
+            dataType:"text",
+            success:function (text) {
+                $("#msg").text(text);
+            }
+        });
+    }
+</script>
+</body>
+</html>
